@@ -77,13 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'shopping_list.wsgi.application'
 
-# Set database settings automatically using DATABASE_URL.
-if PRODUCTION:
-    DATABASES = {
-        'default': env.db('DATABASE_URL')
-    }
-    DATABASES["default"]["ATOMIC_REQUESTS"] = True
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -94,7 +87,13 @@ DATABASES = {
     }
 }
 
-
+# Set database settings automatically using DATABASE_URL.
+if PRODUCTION:
+    DATABASES = {
+        'default': env.db('DATABASE_URL')
+    }
+    DATABASES["default"]["ATOMIC_REQUESTS"] = True
+    
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
